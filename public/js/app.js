@@ -10,7 +10,16 @@ const fetchWeather = (adress) =>
         messageOne.textContent = data.err;
       } else {
         messageOne.textContent = data.location;
-        messageTwo.textContent = data.forecast;
+        const {
+          temperature,
+          precip,
+          weather_descriptions,
+          wind_degree,
+          wind_speed,
+        } = data.forecast;
+        const weatherInfo = `The weather today is ${weather_descriptions[0]} with a temperature of ${temperature} and probability ${precip}. The wind is coming from ${wind_degree} degrees and is blowing with a speed of ${wind_speed} km/h.`;
+
+        messageTwo.textContent = weatherInfo;
       }
     });
   });
